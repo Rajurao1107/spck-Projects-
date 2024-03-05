@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+<button onclick="getQuote()" id="btn">click</button>
+<p id="quote"></p>
+<p id="author"></p>
+
+<script>
+const btn = document.getElementById("btn");
+const quote = document.getElementById("quote");
+const author = document.getElementById("author");
+
+ const data = 'name=Aakash&birthdate=15-02-1989&birthtime=12%3A32&City=DELHI';
+const api = "https://kundli1.p.rapidapi.com/";
+const xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+btn.addEventListener("click", getQuote);
+
+function getQuote() {
+  fetch(api)
+    .then((res) => res.json())
+    .then((data) => {
+      quote.innerHTML = data.date;
+    });
+}
+
+
+xhr.open('POST', 'https://kundli1.p.rapidapi.com/');
+xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+xhr.setRequestHeader('X-RapidAPI-Key', 'b3bae035e3mshadc5ef81e86ce55p116d0ajsn585df81394ce');
+xhr.setRequestHeader('X-RapidAPI-Host', 'kundli1.p.rapidapi.com');
+
+xhr.send(data);
+</script>
+</body>
+
+</html>

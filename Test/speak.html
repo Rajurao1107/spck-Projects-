@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>clickToSpeak</title>
+</head>
+<style>
+  #con{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display :flex ;
+    flex-direction: column;
+  }
+  textarea{
+    position :relative ;
+    background :black ;
+    border :hidden ;
+    border-radius :10px ;
+    color :lightgreen ;
+    text-align :center ;
+    outline :none ;
+  padding: 10px;
+  }
+  button {
+    position :relative ;
+    height :50px ;
+    background :#00ccff;
+    border-radius :10px ;
+    border :hidden ;
+  }
+</style>
+<body>
+<div id="con">
+  <textarea id="textbox" cols="30" rows="10">Ahuja aagar tune ish button ko daba dala to life jingalala</textarea><br>
+  <button id="speakbtn" onclick="speak()">SPEAK </button>
+</div>
+<script>
+  function speak(){
+    let synth = window.speechSynthesis;
+    let voice = new SpeechSynthesisUtterance(`${textbox.value}`);
+    synth.speak(voice);
+  }
+</script>
+</body>
+
+</html>

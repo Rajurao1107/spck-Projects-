@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Quote Generator</title>
+</head>
+<body>
+  <div class="container">
+  <div class="quote-box">
+    <p id="quote">"Quote goes here..."</p>
+    <small id="author">- Author</small>
+  </div>
+  <button id="btn" onclick="checkWeather()">New Quote</button>
+</div>
+
+<script>
+  
+
+const apikey = "2cd4aaa6225ba61913f3fd70b9f92658";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather? units=metric&q=bangalore";
+
+async function checkWeather(){
+const response = await fetch(apiUrl + '&appid=${apiKey}');
+var data = await response.json();
+console.log(data);
+document.getElementById("quote").innerHTML = data.name;
+}
+checkWeather();
+
+</script>
+</body>
+</html>

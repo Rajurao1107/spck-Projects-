@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age and Time Calculator</title>
+  <script>
+    function calculateAgeAndTime() {
+      var dob = document.getElementById('dob').value;
+      var dobDate = new Date(dob);
+      var today = new Date();
+
+      var age = today.getFullYear() - dobDate.getFullYear();
+      if (today.getMonth() < dobDate.getMonth() || (today.getMonth() === dobDate.getMonth() && today.getDate() < dobDate.getDate())) {
+        age--;
+      }
+
+      var eventDate = document.getElementById('eventDate').value;
+      var eventDateObj = new Date(eventDate);
+      var timeDifference = eventDateObj - today;
+      var daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+      document.getElementById('ageResult').innerHTML = 'Your age is: ' + age + ' years';
+      document.getElementById('timeResult').innerHTML = 'Time until event: ' + daysDifference + ' days';
+    }
+  </script>
+</head>
+<body>
+  <label for="dob">Enter your date of birth: </label>
+  <input type="date" id="dob"><br>
+
+  <label for="eventDate">Enter event date: </label>
+  <input type="date" id="eventDate"><br>
+
+  <button onclick="calculateAgeAndTime()">Calculate</button>
+
+  <p id="ageResult"></p>
+  <p id="timeResult"></p>
+</body>
+</html>

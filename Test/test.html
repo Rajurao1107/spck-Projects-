@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text to Input</title>
+</head>
+<body>
+
+  <p id="clickableText" onclick="setTextInInput()">Click me</p>
+  <input type="text" id="inputField">
+
+  <script>
+  const data = 'source_language=en&target_language=hi&text=What%20is%20your%20name%3F';
+    
+    const xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    
+    xhr.addEventListener('readystatechange', function() {
+      if (this.readyState === this.DONE) {
+        console.log(this.responseText);
+      }
+    });
+    
+    xhr.open('POST', 'https://text-translator2.p.rapidapi.com/translate');
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-RapidAPI-Key', 'b3bae035e3mshadc5ef81e86ce55p116d0ajsn585df81394ce');
+    xhr.setRequestHeader('X-RapidAPI-Host', 'text-translator2.p.rapidapi.com');
+    
+    xhr.send(data);
+    alert(data);
+  </script>
+
+</body>
+</html>
